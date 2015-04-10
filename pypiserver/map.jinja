@@ -1,0 +1,18 @@
+{% set pypiserver = salt['grains.filter_by']({
+    'default': {
+        'description': 'PyPI server',
+        'port': '7001',
+        'package_location': '/opt/pypi/packages',
+        'server_name': 'pypi.domain.com',
+        'pkg': 'pypiserver',
+        'service': 'pypi-server',
+    },
+}, merge=salt['pillar.get']('pypiserver:lookup')) %}
+
+{% set nginx = salt['grains.filter_by']({
+    'default': {
+          'web_port': '80',
+          'web_alternate_port': '8080',
+          'web_ssl_port': '443',
+        },
+}, merge=salt['pillar.get']('nginx:lookup')) %}

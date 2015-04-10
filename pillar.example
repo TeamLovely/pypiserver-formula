@@ -1,0 +1,9 @@
+pypiserver:
+  lookup:
+    server_name: {{ grains['id'] }}
+    description: 'Test PyPI server'
+
+nginx:
+  lookup:
+    ssl_certificate: '/etc/nginx/ssl/company.com/company.com.crt'
+    ssl_certificate_key: '/etc/nginx/ssl/company.com/company.pem'
